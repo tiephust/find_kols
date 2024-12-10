@@ -1,10 +1,9 @@
-package twitter_kols.main.java.twitter_kols.core.handlers;
+package twitter_kols.core.handlers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Wait;
 import twitter_kols.propertices.Properties;
 import twitter_kols.webdriver.IDriverManager;
 
@@ -16,11 +15,11 @@ public class LogoutRequestHandler  {
     private final String TWITTER_LOGOUT_URL = Properties.LOGOUT_URL.val();
 
     // Driver WebDriver dùng để điều khiển trình duyệt.
-    protected static final WebDriver driver = IDriverManager.getDriver();
+    protected WebDriver driver;
 
-    // FluentWait để chờ các điều kiện được thỏa mãn.
-    protected final Wait<WebDriver> fluentWait = IDriverManager.getFluentWait();
-
+    public LogoutRequestHandler() {
+        this.driver = IDriverManager.getDriver();
+    }
     /**
      * Xử lý yêu cầu đăng xuất.
      */

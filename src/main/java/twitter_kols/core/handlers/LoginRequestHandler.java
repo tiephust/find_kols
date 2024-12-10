@@ -1,30 +1,31 @@
-package twitter_kols.main.java.twitter_kols.core.handlers;
+package twitter_kols.core.handlers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import twitter_kols.conditions.TwitterLoggedIn;
-import twitter_kols.webdriver.IDriverManager;
 import twitter_kols.propertices.Properties;
+import twitter_kols.webdriver.IDriverManager;
 
 public class LoginRequestHandler{
     // Driver WebDriver dùng để điều khiển trình duyệt.
-    protected static final WebDriver driver = IDriverManager.getDriver();
-    // FluentWait để chờ các điều kiện được thỏa mãn.
-    protected final Wait<WebDriver> fluentWait = IDriverManager.getFluentWait();
+    protected  WebDriver driver;
     // WebDriverWait để chờ các điều kiện được
-    protected final WebDriverWait webDriverWait = IDriverManager.getWebDriverWait();
+    protected WebDriverWait webDriverWait;
 
     // URL trang đăng nhập Twitter.
-    private static final String TWITTER_LOGIN_URL =Properties.LOGIN_URL.val();
+    private static final String TWITTER_LOGIN_URL = Properties.LOGIN_URL.val();
 
     // Kiểm tra điều kiện "đã đăng nhập Twitter".
     private static final TwitterLoggedIn twitterLoggedIn = new TwitterLoggedIn();
 
+    public LoginRequestHandler() {
+        this.driver = IDriverManager.getDriver();
+        this.webDriverWait = IDriverManager.getWebDriverWait();
+    }
     /**
      * Xử lý yêu cầu đăng nhập.
      */
@@ -42,14 +43,10 @@ public class LoginRequestHandler{
         driver.get(TWITTER_LOGIN_URL);
 
         // Kiểm tra xem đã đăng nhập hay chưa.
-//        if (checkIfLoggedIn()) {
-//            System.out.println("Already logged in to twitter"); // Ghi log nếu đã đăng nhập.
-//            return;
-//        }
-
-        // Đợi cho đến khi trường nhập tài khoản xuất hiện.
-//        fluentWait.until(ExpectedConditions.textToBePresentInElementLocated(
-//                By.xpath("//span"), "Sign in to X"));
+        if (checkIfLoggedIn()) {
+            System.out.println("Already logged in to twitter"); // Ghi log nếu đã đăng nhập.
+            return;
+        }
 
         // Enter username
         WebElement usernameField = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='text']")));
@@ -67,8 +64,8 @@ public class LoginRequestHandler{
         WebElement loginButton = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-testid=\"LoginForm_Login_Button\"][type=\"button\"]")));
         loginButton.click();
 
-        // Đợi cho đến khi xác nhận đã đăng nhập thành công.
-//        fluentWait.until(twitterLoggedIn);
+        // Cho den khi dang nhap thanh cong
+//        webDriverWait.until(twitterLoggedIn);
 
         System.out.println("Logged into twitter"); // Ghi log khi đăng nhập thành công.
     }

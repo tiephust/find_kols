@@ -1,9 +1,6 @@
-package twitter_kols.main.java.twitter_kols.webdriver;
+package twitter_kols.webdriver;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -36,14 +33,6 @@ public abstract class IDriverManager {
     // Phương thức trả về đối tượng WebDriverWait.
     public static WebDriverWait getWebDriverWait() {
         return webDriverWait;
-    }
-
-    // Phương thức trả về một FluentWait với các tham số cấu hình như thời gian chờ và cách thức polling.
-    public static Wait<WebDriver> getFluentWait() {
-        return new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))  // Thời gian tối đa để chờ.
-                .pollingEvery(Duration.ofMillis(1000)) // Khoảng thời gian giữa các lần polling.
-                .ignoring(NoSuchElementException.class); // Bỏ qua lỗi NoSuchElementException.
     }
 
     // Phương thức đóng trình duyệt.

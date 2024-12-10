@@ -1,4 +1,4 @@
-package twitter_kols.main.java.twitter_kols.propertices;
+package twitter_kols.propertices;
 
 import java.util.logging.Logger;
 
@@ -9,6 +9,8 @@ public enum Properties {
     LOGOUT_URL("LOGOUT_URL"),
     USERNAME("USERNAME"),
     PASSWORD("PASSWORD"),
+    KEYWORD("KEYWORD"),
+    TEST("TEST"),
     LIKE_LIMIT("LIKE_LIMIT"),
     TWITTER_FEED_URL("TWITTER_FEED_URL"),
     DELAY_IN_MS("DELAY_IN_MS"),

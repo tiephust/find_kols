@@ -1,4 +1,4 @@
-package twitter_kols.main.java.twitter_kols.webdriver;
+package twitter_kols.webdriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
