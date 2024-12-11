@@ -1,25 +1,25 @@
 package twitter_kols;
 
 import twitter_kols.conditions.TwitterLoggedIn;
-import twitter_kols.core.find_users.FindFlowers;
-import twitter_kols.core.find_users.FindKols;
+import twitter_kols.core.find_users.FindKolsUrl;
+import twitter_kols.core.ProcessData;
 import twitter_kols.core.handlers.LoginRequestHandler;
 import twitter_kols.core.handlers.LogoutRequestHandler;
 import twitter_kols.webdriver.ChromeDriverManager;
 
-import java.util.List;
+import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ChromeDriverManager chromeDriverManager = new ChromeDriverManager();
         LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
         TwitterLoggedIn twitterLoggedIn = new TwitterLoggedIn();
         loginRequestHandler.login();
-        FindKols findKols = new FindKols();
+        FindKolsUrl findKols = new FindKolsUrl();
         findKols.findKols();
-        List<String> kols = findKols.getListKoks();
-        FindFlowers findFlowers = new FindFlowers();
-        findFlowers.findMapKolsFlowers(kols);
+        Set<String> kols = findKols.getListKoks();
+        ProcessData processData = new ProcessData();
+        processData.processData(kols);
         LogoutRequestHandler logoutRequestHandler = new LogoutRequestHandler();
         logoutRequestHandler.handleRequest();
         ChromeDriverManager.closeDriver();

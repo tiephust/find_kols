@@ -14,4 +14,8 @@ public class FindUserComment {
         this.driver = IDriverManager.getDriver();
         this.webDriverWait = IDriverManager.getWebDriverWait();
     }
+
+    public void findUserComment() {
+
+    }
 }

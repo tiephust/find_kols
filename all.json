@@ -1,0 +1,36 @@
+{
+  "kol1": {
+    "retweetComments": {
+      "tweet1": ["commentor1", "commentor2"],
+      "tweet2": ["commentor3"]
+    },
+    "tweetComments": {
+      "tweet3": ["commentor4", "commentor5"]
+    },
+    "repostOwner": {
+      "tweet4": "kol2"
+    }
+  },
+  "kol2": {
+    "retweetComments": {
+      "tweet5": ["commentor6"]
+    },
+    "tweetComments": {
+      "tweet6": ["commentor7", "commentor8"]
+    },
+    "repostOwner": {
+      "tweet7": "kol3"
+    }
+  },
+  "kol3": {
+    "retweetComments": {
+      "tweet8": ["commentor9"]
+    },
+    "tweetComments": {
+      "tweet9": ["commentor10"]
+    },
+    "repostOwner": {
+      "tweet10": "kol1"
+    }
+  }
+}

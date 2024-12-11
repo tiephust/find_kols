@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import twitter_kols.conditions.TwitterLoggedIn;
 import twitter_kols.propertices.Properties;
+import twitter_kols.utils.FileWriters;
 import twitter_kols.webdriver.ChromeDriverManager;
 import twitter_kols.webdriver.IDriverManager;
 
@@ -14,21 +15,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class FindKols {
+public class FindKolsUrl {
     // Driver WebDriver dùng để điều khiển trình duyệt.
     protected WebDriver driver;
     // WebDriverWait để chờ các điều kiện được
     protected WebDriverWait webDriverWait;
+
+    private FileWriters fileWriters;
     // Kiem tra dieu kien "da dang nhap Twitter".
     private final TwitterLoggedIn twitterLoggedIn = new TwitterLoggedIn();
     // Từ khóa tìm kiếm KOLs.
     private final String keyword = Properties.KEYWORD.val();
 
-    private  List<String> listKoks;
+    private  Set<String> listKoksUrl;
 
-    public FindKols() {
+    public FindKolsUrl() {
         this.driver = IDriverManager.getDriver();
         this.webDriverWait = IDriverManager.getWebDriverWait();
+        this.fileWriters = new FileWriters();
     }
 
     public void findKols() {
@@ -38,15 +42,16 @@ public class FindKols {
             chromeDriverManager.initDriver();
         }
         try {
-            listKoks = ListKolsFromKeyWord(keyword);
-            System.out.println("List of KOLs: " + listKoks);
+            listKoksUrl = ListKolsFromKeyWord(keyword);
+            System.out.println("List of KOLs: " + listKoksUrl);
+            fileWriters.appendLinksToCSV(listKoksUrl, keyword);
         } catch (Exception e) {
             System.err.println("Error during scraping for keyword: " + keyword);
             e.printStackTrace();
         }
     }
 
-    public List<String> ListKolsFromKeyWord(String keyword) {
+    public Set<String> ListKolsFromKeyWord(String keyword) throws InterruptedException {
         System.out.println("Scraping KOLs...");
         String hashtag = "#" + keyword;
         WebElement searchField = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[placeholder='Search']")));
@@ -56,6 +61,7 @@ public class FindKols {
         WebElement people = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='/search?q=%23" + keyword + "&src=typed_query&f=user']")));  // Tìm và chọn bộ lọc 'People'
         people.click();
 
+        Thread.sleep(10000);
         Set<String> userLinks = new HashSet<>();
         List<WebElement> users = driver.findElements(By.cssSelector("[data-testid='UserCell'][role='button']"));  // Tìm tất cả các phần tử người dùng
 
@@ -64,10 +70,10 @@ public class FindKols {
             userLinks.add(href);  // Thêm liên kết vào Set
             System.out.println(href);  // In liên kết ra màn hình
         }
-        return userLinks.stream().toList();
+        return userLinks;
     }
 
-    public List<String> getListKoks(){
-        return listKoks;
+    public Set<String> getListKoks(){
+        return listKoksUrl;
     }
 }

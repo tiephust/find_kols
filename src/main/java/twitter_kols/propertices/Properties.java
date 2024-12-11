@@ -9,6 +9,7 @@ public enum Properties {
     LOGOUT_URL("LOGOUT_URL"),
     USERNAME("USERNAME"),
     PASSWORD("PASSWORD"),
+    EMAIL("EMAIL"),
     KEYWORD("KEYWORD"),
     TEST("TEST"),
     LIKE_LIMIT("LIKE_LIMIT"),

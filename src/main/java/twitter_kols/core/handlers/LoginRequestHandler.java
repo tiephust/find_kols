@@ -56,6 +56,14 @@ public class LoginRequestHandler{
         WebElement nextButton = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[role='button'][type='button'][class=\"css-175oi2r r-sdzlij r-1phboty r-rs99b7 r-lrvibr r-ywje51 r-184id4b r-13qz1uu r-2yi16 r-1qi8awa r-3pj75a r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l\"]")));
         nextButton.click();
 
+        // Enter username
+        WebElement usernameField1 = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='text']")));
+        usernameField1.sendKeys(Properties.EMAIL.val());
+
+        // Click Next button
+        WebElement nextButton1 = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[role='button'][type='button'][class=\"css-175oi2r r-sdzlij r-1phboty r-rs99b7 r-lrvibr r-19yznuf r-64el8z r-1fkl15p r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l\"]")));
+        nextButton1.click();
+
         // Enter password
         WebElement passwordField = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name=\"password\"][spellcheck=\"true\"]")));
         passwordField.sendKeys(Properties.PASSWORD.val());
