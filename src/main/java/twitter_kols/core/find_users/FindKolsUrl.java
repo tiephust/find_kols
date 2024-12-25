@@ -16,15 +16,10 @@ import java.util.List;
 import java.util.Set;
 
 public class FindKolsUrl {
-    // Driver WebDriver dùng để điều khiển trình duyệt.
     protected WebDriver driver;
-    // WebDriverWait để chờ các điều kiện được
     protected WebDriverWait webDriverWait;
 
-    private FileWriters fileWriters;
-    // Kiem tra dieu kien "da dang nhap Twitter".
     private final TwitterLoggedIn twitterLoggedIn = new TwitterLoggedIn();
-    // Từ khóa tìm kiếm KOLs.
     private final String keyword = Properties.KEYWORD.val();
 
     private  Set<String> listKoksUrl;
@@ -32,7 +27,6 @@ public class FindKolsUrl {
     public FindKolsUrl() {
         this.driver = IDriverManager.getDriver();
         this.webDriverWait = IDriverManager.getWebDriverWait();
-        this.fileWriters = new FileWriters();
     }
 
     public void findKols() {
@@ -44,7 +38,6 @@ public class FindKolsUrl {
         try {
             listKoksUrl = ListKolsFromKeyWord(keyword);
             System.out.println("List of KOLs: " + listKoksUrl);
-            fileWriters.appendLinksToCSV(listKoksUrl, keyword);
         } catch (Exception e) {
             System.err.println("Error during scraping for keyword: " + keyword);
             e.printStackTrace();

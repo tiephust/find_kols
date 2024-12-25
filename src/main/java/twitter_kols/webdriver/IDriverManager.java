@@ -16,7 +16,7 @@ public abstract class IDriverManager {
         this.initDriver();    // Gọi phương thức initDriver để khởi tạo driver.
 
         // Khởi tạo WebDriverWait với thời gian chờ là 10 giây.
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(50));
     }
 
     // Phương thức abstract để setup driver. Cần được triển khai trong lớp con.

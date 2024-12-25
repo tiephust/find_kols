@@ -10,18 +10,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Lớp FileWriters cung cấp các phương thức hỗ trợ ghi dữ liệu vào file CSV và JSON.
- *
- * Chức năng chính:
- * - Thêm liên kết vào file CSV trong thư mục `userlink`.
- * - Ghi kết quả (người theo dõi, người theo dõi đã xác minh, và danh sách đang theo dõi) vào file CSV.
- * - Ghi dữ liệu JSON vào file.
- *
- * Thư viện sử dụng:
- * - OpenCSV: Ghi dữ liệu vào file CSV.
- * - org.json: Ghi dữ liệu JSON.
- */
 public class FileWriters {
 
     /**
@@ -30,13 +18,6 @@ public class FileWriters {
     public FileWriters() {
     }
 
-    /**
-     * Phương thức thêm danh sách liên kết vào file CSV trong thư mục `userlink`.
-     * Nếu thư mục chưa tồn tại, nó sẽ được tạo mới.
-     *
-     * @param listLink Danh sách liên kết cần thêm.
-     * @param keyword  Tên tệp CSV sẽ được sử dụng (không bao gồm "UsersLinks").
-     */
     public void appendLinksToCSV(Set<String> listLink, String keyword) {
         // Tạo thư mục 'userlink' nếu chưa tồn tại
         File directory = new File("userlink");
@@ -58,15 +39,6 @@ public class FileWriters {
         }
     }
 
-    /**
-     * Phương thức ghi kết quả (người theo dõi, người theo dõi đã xác minh, danh sách đang theo dõi) vào file CSV.
-     *
-     * @param filePath         Đường dẫn tệp CSV.
-     * @param link             Liên kết đến người dùng.
-     * @param followers        Danh sách người theo dõi.
-     * @param verifiedFollowers Danh sách người theo dõi đã xác minh.
-     * @param following        Danh sách đang theo dõi.
-     */
     public static void writeResultsToCSV(String filePath, String link, List<String> followers, List<String> verifiedFollowers, List<String> following) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) { // Mở file ở chế độ thêm
             // Lấy tên người dùng từ liên kết (e.g., "https://x.com/Bitcoin" -> "Bitcoin")
@@ -86,18 +58,12 @@ public class FileWriters {
         }
     }
 
-    /**
-     * Phương thức ghi dữ liệu JSON vào tệp với định dạng đẹp (indentation).
-     *
-     * @param filePath  Đường dẫn tệp JSON.
-     * @param jsonArray Dữ liệu cần ghi dưới dạng JSONArray.
-     */
     public static void writeToJSONFile(String filePath, JSONArray jsonArray) {
-        try (FileWriter fileWriter = new FileWriter(filePath)) { // Mở tệp JSON để ghi
-            fileWriter.write(jsonArray.toString(4)); // Ghi dữ liệu JSON với thụt lề (4 spaces)
-            System.out.println("Data successfully saved to " + filePath);
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            fileWriter.write(jsonArray.toString(4)); // Ghi JSON với thụt lề 4 spaces
+            System.out.println("Dữ liệu đã được lưu vào " + filePath);
         } catch (IOException e) {
-            System.err.println("Error writing to JSON file: " + filePath); // Thông báo lỗi khi ghi file
+            System.err.println("Lỗi khi ghi vào file JSON: " + filePath);
             e.printStackTrace();
         }
     }

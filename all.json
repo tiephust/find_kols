@@ -1,36 +1,282 @@
-{
-  "kol1": {
-    "retweetComments": {
-      "tweet1": ["commentor1", "commentor2"],
-      "tweet2": ["commentor3"]
-    },
-    "tweetComments": {
-      "tweet3": ["commentor4", "commentor5"]
-    },
-    "repostOwner": {
-      "tweet4": "kol2"
-    }
+[
+  {
+    "kolUrl": "https://twitter.com/exampleUser1",
+    "flowersCount": 11100000,
+    "verifiedFollowersCount": 1,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "6",
+        "retweetCount": "4",
+        "likeCount": "12",
+        "viewCount": "1"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "7",
+        "retweetCount": "5",
+        "likeCount": "14",
+        "viewCount": "1"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "8",
+        "retweetCount": "6",
+        "likeCount": "16",
+        "viewCount": "1"
+      }
+    ]
   },
-  "kol2": {
-    "retweetComments": {
-      "tweet5": ["commentor6"]
-    },
-    "tweetComments": {
-      "tweet6": ["commentor7", "commentor8"]
-    },
-    "repostOwner": {
-      "tweet7": "kol3"
-    }
+  {
+    "kolUrl": "https://twitter.com/exampleUser2",
+    "flowersCount": 1200,
+    "verifiedFollowersCount": 240,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "9",
+        "retweetCount": "7",
+        "likeCount": "18",
+        "viewCount": "1400"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "10",
+        "retweetCount": "8",
+        "likeCount": "20",
+        "viewCount": "1500"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "11",
+        "retweetCount": "9",
+        "likeCount": "22",
+        "viewCount": "1600"
+      }
+    ]
   },
-  "kol3": {
-    "retweetComments": {
-      "tweet8": ["commentor9"]
-    },
-    "tweetComments": {
-      "tweet9": ["commentor10"]
-    },
-    "repostOwner": {
-      "tweet10": "kol1"
-    }
+  {
+    "kolUrl": "https://twitter.com/exampleUser3",
+    "flowersCount": 1300,
+    "verifiedFollowersCount": 260,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "12",
+        "retweetCount": "10",
+        "likeCount": "24",
+        "viewCount": "1700"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "13",
+        "retweetCount": "11",
+        "likeCount": "26",
+        "viewCount": "1800"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "14",
+        "retweetCount": "12",
+        "likeCount": "28",
+        "viewCount": "1900"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser4",
+    "flowersCount": 1400,
+    "verifiedFollowersCount": 280,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "15",
+        "retweetCount": "13",
+        "likeCount": "30",
+        "viewCount": "2000"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "16",
+        "retweetCount": "14",
+        "likeCount": "32",
+        "viewCount": "2100"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "17",
+        "retweetCount": "15",
+        "likeCount": "34",
+        "viewCount": "2200"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser5",
+    "flowersCount": 1500,
+    "verifiedFollowersCount": 300,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "18",
+        "retweetCount": "16",
+        "likeCount": "36",
+        "viewCount": "2300"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "19",
+        "retweetCount": "17",
+        "likeCount": "38",
+        "viewCount": "2400"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "20",
+        "retweetCount": "18",
+        "likeCount": "40",
+        "viewCount": "2500"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser6",
+    "flowersCount": 1600,
+    "verifiedFollowersCount": 320,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "21",
+        "retweetCount": "19",
+        "likeCount": "42",
+        "viewCount": "2600"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "22",
+        "retweetCount": "20",
+        "likeCount": "44",
+        "viewCount": "2700"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "23",
+        "retweetCount": "21",
+        "likeCount": "46",
+        "viewCount": "2800"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser7",
+    "flowersCount": 1700,
+    "verifiedFollowersCount": 340,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "24",
+        "retweetCount": "22",
+        "likeCount": "48",
+        "viewCount": "2900"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "25",
+        "retweetCount": "23",
+        "likeCount": "50",
+        "viewCount": "3000"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "26",
+        "retweetCount": "24",
+        "likeCount": "52",
+        "viewCount": "3100"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser8",
+    "flowersCount": 1800,
+    "verifiedFollowersCount": 360,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "27",
+        "retweetCount": "25",
+        "likeCount": "54",
+        "viewCount": "3200"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "28",
+        "retweetCount": "26",
+        "likeCount": "56",
+        "viewCount": "3300"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "29",
+        "retweetCount": "27",
+        "likeCount": "58",
+        "viewCount": "3400"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser9",
+    "flowersCount": 10999900,
+    "verifiedFollowersCount": 380,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "30",
+        "retweetCount": "28",
+        "likeCount": "60",
+        "viewCount": "3500"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "31",
+        "retweetCount": "29",
+        "likeCount": "62",
+        "viewCount": "3600"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "32",
+        "retweetCount": "30",
+        "likeCount": "64",
+        "viewCount": "3700"
+      }
+    ]
+  },
+  {
+    "kolUrl": "https://twitter.com/exampleUser10",
+    "flowersCount": 2000,
+    "verifiedFollowersCount": 400,
+    "tweets": [
+      {
+        "tweetId": "0",
+        "commentCount": "33",
+        "retweetCount": "31",
+        "likeCount": "66",
+        "viewCount": "3800"
+      },
+      {
+        "tweetId": "1",
+        "commentCount": "34",
+        "retweetCount": "32",
+        "likeCount": "68",
+        "viewCount": "3900"
+      },
+      {
+        "tweetId": "2",
+        "commentCount": "35",
+        "retweetCount": "33",
+        "likeCount": "70",
+        "viewCount": "4000"
+      }
+    ]
   }
-}
+]

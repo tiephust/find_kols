@@ -26,18 +26,13 @@ public class LoginRequestHandler{
         this.driver = IDriverManager.getDriver();
         this.webDriverWait = IDriverManager.getWebDriverWait();
     }
-    /**
-     * Xử lý yêu cầu đăng nhập.
-     */
+
     public void handleRequest() {
         System.out.println("Login request executed"); // Ghi log khi bắt đầu xử lý đăng nhập.
 
         login(); // Thực hiện đăng nhập.
     }
 
-    /**
-     * Thực hiện đăng nhập vào Twitter.
-     */
     public void login() {
         // Điều hướng đến trang đăng nhập Twitter.
         driver.get(TWITTER_LOGIN_URL);
@@ -56,11 +51,14 @@ public class LoginRequestHandler{
         WebElement nextButton = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[role='button'][type='button'][class=\"css-175oi2r r-sdzlij r-1phboty r-rs99b7 r-lrvibr r-ywje51 r-184id4b r-13qz1uu r-2yi16 r-1qi8awa r-3pj75a r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l\"]")));
         nextButton.click();
 
-        // Enter username
+        /*
+        Nếu bi xác thực email thì bỏ comment dòng này
+        */
         WebElement usernameField1 = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='text']")));
         usernameField1.sendKeys(Properties.EMAIL.val());
-
-        // Click Next button
+        /*
+        Nếu bi xác thực email thì bỏ comment dòng này
+        */
         WebElement nextButton1 = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[role='button'][type='button'][class=\"css-175oi2r r-sdzlij r-1phboty r-rs99b7 r-lrvibr r-19yznuf r-64el8z r-1fkl15p r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l\"]")));
         nextButton1.click();
 
@@ -78,10 +76,7 @@ public class LoginRequestHandler{
         System.out.println("Logged into twitter"); // Ghi log khi đăng nhập thành công.
     }
 
-    /**
-     * Kiểm tra xem người dùng đã đăng nhập hay chưa.
-     * @return True nếu đã đăng nhập, False nếu chưa.
-     */
+
     private boolean checkIfLoggedIn() {
         try {
             // Tạm dừng trong 2 giây để đảm bảo URL được tải xong.
