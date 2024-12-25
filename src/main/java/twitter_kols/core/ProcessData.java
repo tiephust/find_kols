@@ -50,19 +50,41 @@ public class ProcessData {
                 int tweetId = 0;
 
                 // Sử dụng WebDriverWait để chờ các phần tử cần thiết
-                String commentCount = webDriverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("button[data-testid='reply'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))).get(tweetId).getText();
+                String commentCount = "0";
+                try{
+                    commentCount = webDriverWait.until(ExpectedConditions.visibilityOf(
+                            tweet.findElement(By.cssSelector("button[data-testid='reply'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))
+                    )).getText();
+                } catch (Exception e) {
+                    System.out.println("No comment count");
+                }
 
-                String retweetCount = webDriverWait.until(ExpectedConditions.visibilityOf(
+                String retweetCount = "0";
+                try{
+                        retweetCount = webDriverWait.until(ExpectedConditions.visibilityOf(
                         tweet.findElement(By.cssSelector("button[data-testid='retweet'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))
                 )).getText();
+                } catch (Exception e) {
+                    System.out.println("No retweet count");
+                }
 
-                String likeCount = webDriverWait.until(ExpectedConditions.visibilityOf(
-                        tweet.findElement(By.cssSelector("button[data-testid='like'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))
-                )).getText();
+                String likeCount = "0";
+                try {
+                    likeCount = webDriverWait.until(ExpectedConditions.visibilityOf(
+                            tweet.findElement(By.cssSelector("button[data-testid='like'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))
+                    )).getText();
+                } catch (Exception e) {
+                    System.out.println("No like count");
+                }
 
-                String viewCount = webDriverWait.until(ExpectedConditions.visibilityOf(
-                        tweet.findElement(By.cssSelector("a[aria-label*='views. View post analytics'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))
-                )).getText();
+                String viewCount = "0";
+                try{
+                    viewCount= webDriverWait.until(ExpectedConditions.visibilityOf(
+                            tweet.findElement(By.cssSelector("a[aria-label*='views. View post analytics'] span.css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-1awozwy r-6koalj r-1h0z5md r-o7ynqc r-clp7b1 r-3s2u2q"))
+                    )).getText();
+                } catch (Exception e) {
+                    System.out.println("No view count");
+                }
 
                 // Tạo JSONObject cho mỗi tweet
                 JSONObject tweetData = new JSONObject();
