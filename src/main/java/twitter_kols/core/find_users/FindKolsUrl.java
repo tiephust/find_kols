@@ -2,7 +2,7 @@ package twitter_kols.core.find_users;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import twitter_kols.TwitterLoggedIn;
+import twitter_kols.conditions.TwitterLoggedIn;
 import twitter_kols.propertices.Properties;
 import twitter_kols.webdriver.ChromeDriverManager;
 import twitter_kols.webdriver.AbstractDriverManager;

@@ -1,4 +1,4 @@
-package twitter_kols;
+package twitter_kols.conditions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
