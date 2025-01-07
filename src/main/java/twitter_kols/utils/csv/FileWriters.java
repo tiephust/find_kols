@@ -1,7 +1,8 @@
-package twitter_kols.utils;
+package twitter_kols.utils.csv;
 
 import com.opencsv.CSVWriter;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,9 +13,6 @@ import java.util.Set;
 
 public class FileWriters {
 
-    /**
-     * Hàm khởi tạo mặc định.
-     */
     public FileWriters() {
     }
 
@@ -58,7 +56,7 @@ public class FileWriters {
         }
     }
 
-    public static void writeToJSONFile(String filePath, JSONArray jsonArray) {
+    public static void writeToJSONFile(String filePath, JSONObject jsonArray) {
         try (FileWriter fileWriter = new FileWriter(filePath)) {
             fileWriter.write(jsonArray.toString(4)); // Ghi JSON với thụt lề 4 spaces
             System.out.println("Dữ liệu đã được lưu vào " + filePath);

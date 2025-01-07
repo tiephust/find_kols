@@ -5,11 +5,8 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import twitter_kols.propertices.Properties;
-import twitter_kols.webdriver.IDriverManager;
+import twitter_kols.webdriver.AbstractDriverManager;
 
-/**
- * Bộ xử lý yêu cầu đăng xuất khỏi Twitter.
- */
 public class LogoutRequestHandler  {
     // URL của trang đăng xuất Twitter.
     private final String TWITTER_LOGOUT_URL = Properties.LOGOUT_URL.val();
@@ -18,20 +15,15 @@ public class LogoutRequestHandler  {
     protected WebDriver driver;
 
     public LogoutRequestHandler() {
-        this.driver = IDriverManager.getDriver();
+        this.driver = AbstractDriverManager.getDriver();
     }
-    /**
-     * Xử lý yêu cầu đăng xuất.
-     */
+
     public void handleRequest() {
        System.out.println("Logout request executed"); // Ghi log khi bắt đầu xử lý đăng xuất.
 
         logout(); // Thực hiện đăng xuất.
     }
 
-    /**
-     * Thực hiện đăng xuất khỏi Twitter.
-     */
     private void logout() {
         // Điều hướng đến trang đăng xuất Twitter.
         driver.get(TWITTER_LOGOUT_URL);
@@ -51,9 +43,6 @@ public class LogoutRequestHandler  {
                 System.out.println("Already logged out of twitter"); // Ghi log nếu đã đăng xuất.
                 return;
             }
-
-            // Đợi cho đến khi nút xác nhận đăng xuất xuất hiện.
-//            fluentWait.until(ExpectedConditions.presenceOfElementLocated(logoutConfirmBtn));
         } catch (TimeoutException e) {
             // Ghi log nếu xảy ra lỗi Timeout và đã đăng xuất.
             System.out.println("Already logged out of twitter");

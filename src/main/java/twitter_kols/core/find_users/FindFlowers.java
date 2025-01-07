@@ -1,28 +1,22 @@
 package twitter_kols.core.find_users;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import twitter_kols.webdriver.IDriverManager;
+import twitter_kols.webdriver.AbstractDriverManager;
+import twitter_kols.webdriver.ChromeDriverManager;
 
 import java.util.*;
 
 public class FindFlowers {
-    protected WebDriver driver;
-    protected WebDriverWait webDriverWait;
+    private final ChromeDriverManager driverManager;
 
     public FindFlowers() {
-        this.driver = IDriverManager.getDriver();
-        this.webDriverWait = IDriverManager.getWebDriverWait();
+        this.driverManager = new ChromeDriverManager();
     }
 
     public long findCountFlowers(String kolUrl) {
-        driver.get(kolUrl);
-        WebElement followersLink = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("a[href*='verified_followers']")
-        )).findElement(By.cssSelector("span"));;
+        AbstractDriverManager.getDriver().get(kolUrl);
+        WebElement followersLink = driverManager.visibilityOfElementLocated("a[href*='verified_followers']").findElement(By.cssSelector("span"));
 
         // Lấy nội dung (text) của thẻ a
         String countFollowers = followersLink.getText();
@@ -63,9 +57,9 @@ public class FindFlowers {
 
     public int findCountUsers(String kolUrl) {
         int count = 0;
-        driver.get(kolUrl);
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='cellInnerDiv']")));
-        List<WebElement> users = driver.findElements(By.cssSelector("[data-testid='cellInnerDiv']"));
+        AbstractDriverManager.getDriver().get(kolUrl);
+        driverManager.visibilityOfElementLocated("[data-testid='cellInnerDiv']");
+        List<WebElement> users = AbstractDriverManager.getDriver().findElements(By.cssSelector("[data-testid='cellInnerDiv']"));
         List<String> usernames = new ArrayList<>();
         for (WebElement user : users) {
             try {
