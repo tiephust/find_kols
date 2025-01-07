@@ -23,12 +23,12 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
-        ChromeDriverManager chromeDriverManager = new ChromeDriverManager();
-        LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
-        loginRequestHandler.handleRequest();
-        ProcessData processData = new ProcessData();
-        processData.processData();
-        String filePath = "all.json";
+//        ChromeDriverManager chromeDriverManager = new ChromeDriverManager();
+//        LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
+//        loginRequestHandler.handleRequest();
+//        ProcessData processData = new ProcessData();
+//        processData.processData();
+        String filePath = "result.json";
         JSONArray jsonArray = new JSONArray(new String(Files.readAllBytes(Paths.get(filePath))));
         Graph graph = new Graph();
         GraphBuilder graphBuilder = new GraphBuilder(graph);
@@ -38,8 +38,8 @@ public class Main {
         PageRank pageRank = new PageRank();
         Map<String, Double> pageRankMap = pageRank.calculatePageRank(jsonArray);
         pageRank.printSortedPageRank(pageRankMap);
-        LogoutRequestHandler logoutRequestHandler = new LogoutRequestHandler();
-        logoutRequestHandler.handleRequest();
-        ChromeDriverManager.closeDriver();
+//        LogoutRequestHandler logoutRequestHandler = new LogoutRequestHandler();
+//        logoutRequestHandler.handleRequest();
+//        ChromeDriverManager.closeDriver();
     }
 }

@@ -1,67 +1,47 @@
 package twitter_kols.utils.csv;
 
-import com.opencsv.CSVWriter;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
-import java.util.Set;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileWriters {
 
-    public FileWriters() {
-    }
+    // Hàm thêm dữ liệu vào file JSON
+    public static void appendToJSONFile(String filePath, JSONObject newData) {
+        try {
+            // Đọc dữ liệu hiện có từ file JSON
+            File file = new File(filePath);
+            JSONArray jsonArray;
 
-    public void appendLinksToCSV(Set<String> listLink, String keyword) {
-        // Tạo thư mục 'userlink' nếu chưa tồn tại
-        File directory = new File("userlink");
-        if (!directory.exists()) {
-            directory.mkdir(); // Tạo thư mục mới nếu chưa có
-        }
-
-        // Đặt tên tệp CSV dựa trên từ khóa
-        String fileName = "userlink/" + keyword + ".csv";
-
-        try (CSVWriter writer = new CSVWriter(new FileWriter(fileName, true))) { // Mở file ở chế độ thêm (append)
-            for (String element : listLink) {
-                String[] record = {element}; // Mỗi liên kết là một dòng trong file CSV
-                writer.writeNext(record); // Ghi dữ liệu vào tệp
+            if (file.exists() && file.length() > 0) {
+                // Nếu file đã có dữ liệu, đọc nó vào JSONArray
+                String content = new String(Files.readAllBytes(Paths.get(filePath)));
+                jsonArray = new JSONArray(content);
+            } else {
+                // Nếu file chưa có dữ liệu, tạo mảng JSON mới
+                jsonArray = new JSONArray();
             }
-            System.out.println("Set appended to " + fileName);
+
+            // Thêm dữ liệu mới vào mảng
+            jsonArray.put(newData);
+
+            // Ghi lại mảng JSON vào file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                writer.write(jsonArray.toString(4)); // Viết với định dạng dễ đọc (4 là số khoảng trắng)
+            }
+
         } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage()); // Thông báo lỗi khi ghi file
+            e.printStackTrace();
         }
     }
 
-    public static void writeResultsToCSV(String filePath, String link, List<String> followers, List<String> verifiedFollowers, List<String> following) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) { // Mở file ở chế độ thêm
-            // Lấy tên người dùng từ liên kết (e.g., "https://x.com/Bitcoin" -> "Bitcoin")
-            String username = link.substring(link.lastIndexOf("/") + 1);
-
-            // Chuẩn bị một dòng dữ liệu với các cột theo định dạng CSV
-            String row = String.format("\"%s\",\"%s\",\"%s\",\"%s\"\n",
-                    username, // Cột đầu tiên là tên người dùng
-                    String.join(", ", followers), // Danh sách người theo dõi
-                    String.join(", ", verifiedFollowers), // Danh sách người theo dõi đã xác minh
-                    String.join(", ", following)); // Danh sách đang theo dõi
-
-            // Ghi dòng dữ liệu vào file CSV
-            bw.write(row);
+    // Hàm ghi dữ liệu vào file JSON
+    public static void writeToJSONFile(String filePath, JSONArray data) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(data.toString(4)); // Viết dữ liệu với định dạng dễ đọc
         } catch (IOException e) {
-            e.printStackTrace(); // Thông báo lỗi khi ghi file
-        }
-    }
-
-    public static void writeToJSONFile(String filePath, JSONObject jsonArray) {
-        try (FileWriter fileWriter = new FileWriter(filePath)) {
-            fileWriter.write(jsonArray.toString(4)); // Ghi JSON với thụt lề 4 spaces
-            System.out.println("Dữ liệu đã được lưu vào " + filePath);
-        } catch (IOException e) {
-            System.err.println("Lỗi khi ghi vào file JSON: " + filePath);
             e.printStackTrace();
         }
     }

@@ -68,7 +68,7 @@ public class ProcessData {
             kolData.put("tweets", tweetsArray);
 
             kolDataArray.put(kolData); // Thêm vào mảng KOLs
-            FileWriters.writeToJSONFile("result.json", kolData);
+            FileWriters.appendToJSONFile("result.json", kolData);
         }
 
         // Ghi dữ liệu vào file JSON

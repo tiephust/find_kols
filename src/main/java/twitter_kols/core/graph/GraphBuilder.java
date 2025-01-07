@@ -28,7 +28,8 @@ public class GraphBuilder {
             JSONArray tweets = kolData.getJSONArray("tweets");
             for (int j = 0; j < tweets.length(); j++) {
                 JSONObject tweet = tweets.getJSONObject(j);
-                String tweetId = tweet.getString("tweetId");
+                int tweetIdInt = tweet.getInt("tweetId");
+                String tweetId = String.valueOf(tweetIdInt);;
 
                 // Connect tweet to KOL
                 graph.addEdge(kolUrl, tweetId);
@@ -37,10 +38,10 @@ public class GraphBuilder {
                 // Add tweet data to the graph (nodes are tweets themselves)
                 graph.addNode(tweetId);
 
-                graph.addEdge(tweetId, "commentCount:" + tweet.getString("commentCount"));
-                graph.addEdge(tweetId, "retweetCount:" + tweet.getString("retweetCount"));
-                graph.addEdge(tweetId, "likeCount:" + tweet.getString("likeCount"));
-                graph.addEdge(tweetId, "viewCount:" + tweet.getString("viewCount"));
+                graph.addEdge(tweetId, "commentCount:" + tweet.getInt("commentCount"));
+                graph.addEdge(tweetId, "retweetCount:" + tweet.getInt("retweetCount"));
+                graph.addEdge(tweetId, "likeCount:" + tweet.getInt("likeCount"));
+                graph.addEdge(tweetId, "viewCount:" + tweet.getInt("viewCount"));
             }
         }
     }
